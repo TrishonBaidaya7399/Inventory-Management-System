@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+// Global css
+@import "./global/variable";
+@import "./global/common";
+
+// components
+// components-dashboard
+@import "./components/dashboard/header";
+@import "./components/dashboard/searchInput";
+
+// back office pages
+
+// inventory dashboard
+@import "./back-office/inventory-dashboard/layout";
+
+// inventory dashboard page
+@import "./back-office/inventory-dashboard/home/overview/page"

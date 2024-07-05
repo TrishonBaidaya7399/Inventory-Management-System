@@ -1,0 +1,54 @@
+.top_header_part {
+  background-color: $gray;
+  padding: 8px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    .right_1 {
+      .plus_icon {
+        background-color: $purple;
+        color: $whiteColor;
+        padding: 3px;
+        border-radius: 5px;
+        font-size: 10px;
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    .right_2 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      padding-inline: 10px;
+      border-left: 2px solid $gray2;
+      border-right: 2px solid $gray2;
+    }
+    .right_3 {
+    }
+    .userDropdown{
+        .userName{
+            color: $black;
+            font-size: 20px;
+        }
+        .dropdown_box{
+            background-color: $blueColor !important;
+            color: $whiteColor;
+        }
+    }
+  }
+}
