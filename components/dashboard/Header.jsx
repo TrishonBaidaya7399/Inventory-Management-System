@@ -2,6 +2,7 @@ import {
   Bell,
   ChevronDown,
   History,
+  LayoutGrid,
   Plus,
   Settings,
   Users,
@@ -97,6 +98,9 @@ function Header() {
               height={30}
               className="border-1 border-slate-900 rounded-full"
             />
+          </button>
+          <button className="grid">
+            <LayoutGrid/>
           </button>
         </div>
       </div>
