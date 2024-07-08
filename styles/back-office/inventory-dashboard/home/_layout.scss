@@ -1,0 +1,33 @@
+.homepage_layout {
+  .header_part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    .logo {
+      border-radius: 10px;
+      border: 1px solid $line_color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: 50px;
+      svg {
+        height: 26px;
+        width: 26px;
+      }
+    }
+    .text {
+      .name {
+        font-size: 26px;
+        font-weight: 600;
+        color: $text-black;
+      }
+      .message {
+        font-size: 14px;
+        font-weight: 500;
+        color: $text-black;
+      }
+    }
+  }
+}

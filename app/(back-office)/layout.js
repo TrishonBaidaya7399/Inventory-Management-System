@@ -10,8 +10,10 @@ import {
   Home,
   HousePlug,
   ShoppingBag,
+  ShoppingCart,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import SubscriptionCard from "@/components/dashboard/SubscriptionCard";
 
 const { Content } = Layout;
 
@@ -35,7 +37,13 @@ const items = [
     "/inventory-dashboard/inventory"
   ),
   getItem("Sales", "sales", <BaggageClaim />, [
-    getItem("Sales Overview", "sales-overview", null, null, "/inventory-dashboard/sales"),
+    getItem(
+      "Sales Overview",
+      "sales-overview",
+      null,
+      null,
+      "/inventory-dashboard/sales"
+    ),
     getItem("Bill", "bill", null, null, "/inventory-dashboard/sales/bill"),
     getItem("Alex", "alex", null, null, "/inventory-dashboard/sales/alex"),
   ]),
@@ -44,8 +52,20 @@ const items = [
     "purchases",
     <ShoppingBag />,
     [
-      getItem("Team 1", "team1", null, null, "/inventory-dashboard/purchases/team1"),
-      getItem("Team 2", "team2", null, null, "/inventory-dashboard/purchases/team2")
+      getItem(
+        "Team 1",
+        "team1",
+        null,
+        null,
+        "/inventory-dashboard/purchases/team1"
+      ),
+      getItem(
+        "Team 2",
+        "team2",
+        null,
+        null,
+        "/inventory-dashboard/purchases/team2"
+      ),
     ],
     "/inventory-dashboard/purchases"
   ),
@@ -80,25 +100,26 @@ function DashboardLayout({ children }) {
   const router = useRouter();
 
   const handleNavigation = (val) => {
-  let link = null
-  items.forEach(item =>{
-    if(item?.key === val?.key){
-      link= item?.link
-    }else if(item?.children){
-      item.children.forEach((child)=>{
-        if(child?.key === val?.key){
-          link = child?.key
-        }
-      })
+    let link = null;
+    items.forEach((item) => {
+      if (item?.key === val?.key) {
+        link = item?.link;
+      } else if (item?.children) {
+        item.children.forEach((child) => {
+          if (child?.key === val?.key) {
+            link = child?.key;
+          }
+        });
+      }
+    });
+    if (link) {
+      router.push(link);
     }
-  })
-  if(link){
-    router.push(link)
-  }
   };
 
   return (
     <Layout
+      className="backOffice_main_layout"
       style={{
         minHeight: "100vh",
       }}
@@ -106,16 +127,30 @@ function DashboardLayout({ children }) {
       <Sider
         collapsible
         collapsed={collapsed}
+        className={collapsed ? "slider_content_collapsed bg-slate-900" : "slider_content bg-slate-900"}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <div className="demo-logo-vertical" />
+        <div className="demo-logo-vertical bg-slate-950 flex items-center justify-center h-[70px]">
+          <ShoppingCart />
+
+          <div className={collapsed ? "hidden" : "title"}>Inventory</div>
+        </div>
+
         <Menu
+          className="bg-slate-900"
           theme="dark"
           defaultSelectedKeys={["1"]}
           mode="inline"
           items={items}
           onClick={handleNavigation}
         />
+        <div
+          className={
+            collapsed ? "hidden" : "subscription_card_container bg-slate-900"
+          }
+        >
+          <SubscriptionCard />
+        </div>
       </Sider>
       <Layout>
         <main className="main_content w-full bg-slate-100 min-h-screen overflow-y-auto">
