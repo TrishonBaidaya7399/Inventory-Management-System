@@ -44,8 +44,9 @@ function HomeNavbar() {
     }
   };
   return (
-    <div className="hone_navbar_container">
-      <div className="header_part">
+    <div className="home_navbar_container ">
+      <div className="home_header">
+      <div className="header_part px-6">
         <div className="logo">
           <CopyIcon />
         </div>
@@ -56,6 +57,7 @@ function HomeNavbar() {
       </div>
       <div className="tabs">
         <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+      </div>
       </div>
     </div>
   );

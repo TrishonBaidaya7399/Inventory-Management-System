@@ -5,7 +5,6 @@ function Layout({ children }) {
   return (
     <div className="homepage_layout">
      <HomeNavbar/>
-      {/* <div className="content">{children}</div> */}
     </div>
   );
 }

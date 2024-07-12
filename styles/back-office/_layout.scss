@@ -1,5 +1,9 @@
 .backOffice_main_layout {
-  .slider_content{
+  background-image: url("https://res.cloudinary.com/dfogbvvvs/image/upload/v1720771197/z0p4pd2zqpxzn0mfxj3z.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  .slider_content {
     min-width: 220px !important;
     max-width: 240px !important;
     .ant-layout-sider-children {
@@ -18,7 +22,7 @@
         }
       }
       .ant-menu {
-        height: 100%;
+        height: 80%;
         .ant-menu-item,
         .ant-menu-submenu {
           &:hover {

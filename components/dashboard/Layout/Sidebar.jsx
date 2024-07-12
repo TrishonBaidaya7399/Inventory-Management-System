@@ -1,7 +1,6 @@
 "use client";
-import Header from "@/components/dashboard/Header";
 import React, { useState } from "react";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
 import {
   BaggageClaim,
@@ -14,8 +13,6 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import SubscriptionCard from "@/components/dashboard/SubscriptionCard";
-
-const { Content } = Layout;
 
 function getItem(label, key, icon, children, link) {
   return {
@@ -92,11 +89,8 @@ const items = [
   ),
 ];
 
-function DashboardLayout({ children }) {
+const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
   const router = useRouter();
 
   const handleNavigation = (val) => {
@@ -107,7 +101,7 @@ function DashboardLayout({ children }) {
       } else if (item?.children) {
         item.children.forEach((child) => {
           if (child?.key === val?.key) {
-            link = child?.key;
+            link = child?.link;
           }
         });
       }
@@ -118,49 +112,29 @@ function DashboardLayout({ children }) {
   };
 
   return (
-    <Layout
-      className="backOffice_main_layout h-screen"
+    <Sider
+      collapsible
+      collapsed={collapsed}
+      className={collapsed ? "slider_content_collapsed bg-slate-900" : "slider_content bg-slate-900"}
+      onCollapse={(value) => setCollapsed(value)}
     >
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        className={
-          collapsed
-            ? "slider_content_collapsed bg-slate-900 fixed"
-            : "slider_content bg-slate-900 fixed"
-        }
-        onCollapse={(value) => setCollapsed(value)}
-      >
-        <div className="demo-logo-vertical bg-slate-950 flex items-center justify-center h-[70px]">
-          <ShoppingCart />
-
-          <div className={collapsed ? "hidden" : "title"}>Inventory</div>
-        </div>
-
-        <Menu
-          className="bg-slate-900"
-          theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
-          items={items}
-          onClick={handleNavigation}
-        />
-        <div
-          className={
-            collapsed ? "hidden" : "subscription_card_container bg-slate-900"
-          }
-        >
-          <SubscriptionCard />
-        </div>
-      </Sider>
-      <Layout>
-        <main className="main_content w-full bg-slate-100 min-h-screen overflow-y-auto">
-          <Header className="fixed" />
-          <Content className="max-h-[80%] overflow-auto">{children}</Content>
-        </main>
-      </Layout>
-    </Layout>
+      <div className="demo-logo-vertical bg-slate-950 flex items-center justify-center h-[70px]">
+        <ShoppingCart />
+        <div className={collapsed ? "hidden" : "title"}>Inventory</div>
+      </div>
+      <Menu
+        className="bg-slate-900"
+        theme="dark"
+        defaultSelectedKeys={["1"]}
+        mode="inline"
+        items={items}
+        onClick={handleNavigation}
+      />
+      <div className={collapsed ? "hidden" : "subscription_card_container bg-slate-900"}>
+        <SubscriptionCard />
+      </div>
+    </Sider>
   );
-}
+};
 
-export default DashboardLayout;
+export default Sidebar;
