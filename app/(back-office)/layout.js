@@ -29,13 +29,29 @@ function getItem(label, key, icon, children, link) {
 
 const items = [
   getItem("Home", "home", <Home />, null, "/inventory-dashboard/home/overview"),
-  getItem(
-    "Inventory",
-    "inventory",
-    <ShoppingBag />,
-    null,
-    "/inventory-dashboard/inventory"
-  ),
+  getItem("Inventory", "inventory", <ShoppingBag />, [
+    getItem(
+      "Items",
+      "items",
+      null,
+      null,
+      "/inventory-dashboard/inventory/items"
+    ),
+    getItem(
+      "Item Groups",
+      "itemGroups",
+      null,
+      null,
+      "/inventory-dashboard/inventory/itemgroups"
+    ),
+    getItem(
+      "Adjustments",
+      "adjustments",
+      null,
+      null,
+      "/inventory-dashboard/inventory/adjustments"
+    ),
+  ]),
   getItem("Sales", "sales", <BaggageClaim />, [
     getItem(
       "Sales Overview",
@@ -107,7 +123,7 @@ function DashboardLayout({ children }) {
       } else if (item?.children) {
         item.children.forEach((child) => {
           if (child?.key === val?.key) {
-            link = child?.key;
+            link = child?.link;
           }
         });
       }
@@ -118,9 +134,7 @@ function DashboardLayout({ children }) {
   };
 
   return (
-    <Layout
-      className="backOffice_main_layout h-screen"
-    >
+    <Layout className="backOffice_main_layout h-screen">
       <Sider
         collapsible
         collapsed={collapsed}
