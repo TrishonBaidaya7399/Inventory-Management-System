@@ -6,7 +6,7 @@ function PrimaryButton({ title, icon, reverseIcon, className, ...rest }) {
       className={`${
         !className
           ? "bg-blue-600 rounded-lg text-white font-semibold text-lg p-2"
-          : `bg-blue-600 rounded-lg text-white font-semibold text-lg ${className}`
+          : `bg-blue-600 rounded-lg font-semibold text-lg ${className}`
       }`}
       {...rest}
     >

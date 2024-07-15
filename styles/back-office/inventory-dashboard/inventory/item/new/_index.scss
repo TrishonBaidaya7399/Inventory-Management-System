@@ -1,0 +1,13 @@
+.create_new_inventory_form {
+  height: calc(100vh - 60px);
+  .inventory_form_container {
+    height: calc(100vh - 130px);
+    overflow-y: auto;
+  }
+  .footer_part {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+  }
+}

@@ -168,9 +168,9 @@ function DashboardLayout({ children }) {
         </div>
       </Sider>
       <Layout>
-        <main className="main_content w-full bg-slate-100 min-h-screen overflow-y-auto">
+        <main className="main_content w-full bg-slate-100 overflow-hidden">
           <Header className="fixed" />
-          <Content className="max-h-[80%] overflow-auto">{children}</Content>
+          <Content className="max-h-screen overflow-auto">{children}</Content>
         </main>
       </Layout>
     </Layout>
