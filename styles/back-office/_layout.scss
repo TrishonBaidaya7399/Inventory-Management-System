@@ -21,48 +21,61 @@
           height: 30px;
         }
       }
-      .ant-menu {
-        height: 80%;
-        .ant-menu-item,
-        .ant-menu-submenu {
-          &:hover {
-            background-color: rgb(0, 102, 255);
-            border-radius: 8px;
+      .navigation_contents {
+        height: 100%;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        .ant-menu {
+          height: fit-content;
+          // margin-bottom: 50px;
+          .ant-menu-item,
+          .ant-menu-submenu {
+            &:hover {
+              background-color: rgb(0, 102, 255);
+              border-radius: 8px;
+            }
+          }
+        }
+        .subscription_card_container {
+          margin-bottom: 100px;
+          .subscription_card {
+            background-color: $text-black;
+            margin-inline: 10px;
+            border-radius: 10px;
+
+            display: flex;
+            flex-direction: column;
+            color: $text-white;
+            .note {
+              padding: 8px;
+              p {
+                border-left: 2px solid orange;
+                border-radius: 3px;
+                padding-inline: 5px;
+              }
+            }
+            .buttons {
+              display: flex;
+              flex-direction: row;
+              border-top: 2px solid #dddd;
+              .change_plan {
+                border-right: 2px solid #dddd;
+              }
+              button {
+                padding: 8px;
+                text-align: center;
+                width: 100%;
+              }
+            }
           }
         }
       }
-      .subscription_card_container {
-        margin-top: -200px;
-        .subscription_card {
-          background-color: $text-black;
-          margin-inline: 10px;
-          border-radius: 10px;
-
-          display: flex;
-          flex-direction: column;
-          color: $text-white;
-          .note {
-            padding: 8px;
-            p {
-              border-left: 2px solid orange;
-              border-radius: 3px;
-              padding-inline: 5px;
-            }
-          }
-          .buttons {
-            display: flex;
-            flex-direction: row;
-            border-top: 2px solid #dddd;
-            .change_plan {
-              border-right: 2px solid #dddd;
-            }
-            button {
-              padding: 8px;
-              text-align: center;
-              width: 100%;
-            }
-          }
-        }
+      .navigation_contents::-webkit-scrollbar {
+        display: none;
       }
     }
     .ant-layout-sider-trigger {

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+//common
+@import "./common/default.scss";
+
 // Global css
 @import "./global/variable";
 @import "./global/common";

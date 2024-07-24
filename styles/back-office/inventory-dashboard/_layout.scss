@@ -1,7 +1,11 @@
-.inventory_dashboard_layout{
-    .sidebar{}
-    .main_content{
-        background-color: $bgColor ;
-        min-height: 100%;
+.inventory_dashboard_layout {
+  .sidebar {
+  }
+  .main_container {
+    background-color: $bgColor;
+    min-height: 100%;
+    .main_content {
+      @include custom_scrollbar;
     }
+  }
 }

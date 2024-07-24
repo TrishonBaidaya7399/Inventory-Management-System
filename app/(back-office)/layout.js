@@ -38,11 +38,11 @@ const items = [
       "/inventory-dashboard/inventory/items"
     ),
     getItem(
-      "Item Groups",
-      "itemGroups",
+      "Categories",
+      "categories",
       null,
       null,
-      "/inventory-dashboard/inventory/itemgroups"
+      "/inventory-dashboard/inventory/categories"
     ),
     getItem(
       "Adjustments",
@@ -50,6 +50,27 @@ const items = [
       null,
       null,
       "/inventory-dashboard/inventory/adjustments"
+    ),
+    getItem(
+      "Brands",
+      "brands",
+      null,
+      null,
+      "/inventory-dashboard/inventory/brands"
+    ),
+    getItem(
+      "Units",
+      "units",
+      null,
+      null,
+      "/inventory-dashboard/inventory/units"
+    ),
+    getItem(
+      "Warehouse",
+      "warehouse",
+      null,
+      null,
+      "/inventory-dashboard/inventory/warehouse"
     ),
   ]),
   getItem("Sales", "sales", <BaggageClaim />, [
@@ -150,27 +171,26 @@ function DashboardLayout({ children }) {
 
           <div className={collapsed ? "hidden" : "title"}>Inventory</div>
         </div>
-
-        <Menu
-          className="bg-slate-900"
-          theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
-          items={items}
-          onClick={handleNavigation}
-        />
-        <div
-          className={
-            collapsed ? "hidden" : "subscription_card_container bg-slate-900"
-          }
-        >
-          <SubscriptionCard />
+        <div className="navigation_contents">
+          <Menu
+            className=""
+            theme="dark"
+            defaultSelectedKeys={["1"]}
+            mode="inline"
+            items={items}
+            onClick={handleNavigation}
+          />
+          <div className={collapsed ? "hidden" : "subscription_card_container"}>
+            <SubscriptionCard />
+          </div>
         </div>
       </Sider>
       <Layout>
-        <main className="main_content w-full bg-slate-100 overflow-hidden">
+        <main className="main_container w-full bg-slate-100 overflow-hidden ">
           <Header className="fixed" />
-          <Content className="max-h-screen overflow-auto">{children}</Content>
+          <Content className="max-h-screen overflow-auto main_content">
+            {children}
+          </Content>
         </main>
       </Layout>
     </Layout>

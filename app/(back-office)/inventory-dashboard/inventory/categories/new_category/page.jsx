@@ -1,13 +1,14 @@
 "use client";
+
 import PrimaryButton from "@/components/global/Buttons/PrimaryButton";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-function NewItemForm({ props }) {
+function NewCategoryForm({ props }) {
   const router = useRouter();
   const handleBack = () => {
-    console.log("Back clicked")
+    console.log("Back clicked");
     router.back();
   };
   return (
@@ -25,8 +26,8 @@ function NewItemForm({ props }) {
           className="px-6 py-2 rounded-md text-xl font-semibold text-white border-2 border-blue-500"
         />
         <PrimaryButton
-          onClick={handleBack}
           title="Cancel"
+          onClick={handleBack}
           className="bg-gray-200 border-gray-300 border-2 px-6 py-2 rounded-md text-xl font-semibold text-gray-500"
         />
       </div>
@@ -34,4 +35,4 @@ function NewItemForm({ props }) {
   );
 }
 
-export default NewItemForm;
+export default NewCategoryForm;
