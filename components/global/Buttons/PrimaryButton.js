@@ -1,8 +1,9 @@
 import React from "react";
 
-function PrimaryButton({ title, icon, reverseIcon, className, ...rest }) {
+function PrimaryButton({ title, icon, reverseIcon, type, className, ...rest }) {
   return (
     <button
+      type={type}
       className={`${
         !className
           ? "bg-blue-600 rounded-lg text-white font-semibold text-lg p-2"

@@ -1,35 +1,50 @@
 "use client";
 import PrimaryButton from "@/components/global/Buttons/PrimaryButton";
+import GlobalForm from "@/components/global/GlobalForm/GlobalForm";
+import InputField from "@/components/global/InputField/InputField";
+import Card from "antd/es/card/Card";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useForm } from "react-hook-form";
 
 function NewItemForm({ props }) {
   const router = useRouter();
   const handleBack = () => {
-    console.log("Back clicked")
+    console.log("Back clicked");
     router.back();
   };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
+  };
+
   return (
-    <div className="create_new_inventory_form">
-      <div className="header_part h-[70px] px-8 bg-white flex items-center justify-between">
-        <h4 className="text-3xl font-bold text-slate-900">New Item</h4>
-        <button onClick={handleBack}>
-          <X color="red" />
-        </button>
-      </div>
-      <div className="inventory_form_container"></div>
-      <div className="footer_part h-[70px] px-8 bg-white flex items-center justify-start gap-6">
-        <PrimaryButton
-          title="Save"
-          className="px-6 py-2 rounded-md text-xl font-semibold text-white border-2 border-blue-500"
-        />
-        <PrimaryButton
-          onClick={handleBack}
-          title="Cancel"
-          className="bg-gray-200 border-gray-300 border-2 px-6 py-2 rounded-md text-xl font-semibold text-gray-500"
-        />
-      </div>
+    <div className="add_new_item_form_container">
+      <GlobalForm
+        formTitle={"New Item"}
+        handleCancel={handleBack}
+        handleSubmit={handleSubmit}
+        onSubmit={onSubmit}
+      >
+        <Card className="w-full max-w-3xl mx-auto my-6 h-fit max-h-70 overflow-auto">
+          <div className="">
+            <InputField
+              register={register}
+              errors={errors}
+              maxLength={50}
+              name="title"
+              label="Category Title"
+            />
+          </div>
+        </Card>
+      </GlobalForm>
     </div>
   );
 }
