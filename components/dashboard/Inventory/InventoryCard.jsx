@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import PrimaryButton from "@/components/global/Buttons/PrimaryButton";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function InventoryCard({
@@ -10,7 +11,7 @@ function InventoryCard({
   buttonTitle,
   image,
   onClick,
-  enabled=false,
+  enabled = false,
   className,
   ...rest
 }) {
@@ -25,13 +26,13 @@ function InventoryCard({
         {subTitle}
       </div>
       {!enabled && (
-        <a href={href} target="_blank">
+        <Link href={href}>
           <PrimaryButton
             title={buttonTitle}
             className="px-4 py-2 text-white text-semibold text-xl"
             onClick={onClick}
           />
-        </a>
+        </Link>
       )}
       {enabled && (
         <PrimaryButton

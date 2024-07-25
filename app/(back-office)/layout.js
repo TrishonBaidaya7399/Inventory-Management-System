@@ -35,44 +35,44 @@ const items = [
       "items",
       null,
       null,
-      "/inventory-dashboard/inventory/items"
+      "/inventory-dashboard/inventory"
     ),
     getItem(
       "Categories",
       "categories",
       null,
       null,
-      "/inventory-dashboard/inventory/categories"
+      "/inventory-dashboard/inventory"
     ),
     getItem(
       "Adjustments",
       "adjustments",
       null,
       null,
-      "/inventory-dashboard/inventory/adjustments"
+      "/inventory-dashboard/inventory"
     ),
     getItem(
       "Brands",
       "brands",
       null,
       null,
-      "/inventory-dashboard/inventory/brands"
+      "/inventory-dashboard/inventory"
     ),
     getItem(
       "Units",
       "units",
       null,
       null,
-      "/inventory-dashboard/inventory/units"
+      "/inventory-dashboard/inventory"
     ),
     getItem(
       "Warehouse",
       "warehouse",
       null,
       null,
-      "/inventory-dashboard/inventory/warehouse"
+      "/inventory-dashboard/inventory"
     ),
-  ]),
+  ],"/inventory-dashboard/inventory"),
   getItem("Sales", "sales", <BaggageClaim />, [
     getItem(
       "Sales Overview",

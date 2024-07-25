@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 
-function NewItemForm({ props }) {
+function NewCategoryForm({ props }) {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const handleBack = () => {
@@ -38,6 +38,7 @@ function NewItemForm({ props }) {
         body: JSON.stringify(data),
       });
       if (response.ok) {
+        console.log(response);
         setSubmitting(false);
         message.success("New Category Created Successfully!");
         reset();
@@ -56,7 +57,7 @@ function NewItemForm({ props }) {
         handleCancel={handleBack}
         handleSubmit={handleSubmit(onSubmit)}
         submitting={submitting}
-        submitButtonTitle="Add New Item"
+        submitButtonTitle="Add New category"
       >
         <Card className="w-full max-w-3xl mx-auto my-6 h-fit max-h-70 overflow-auto">
           <div className="">
@@ -65,7 +66,7 @@ function NewItemForm({ props }) {
               errors={errors}
               maxLength={50}
               name="title"
-              label="Item Title"
+              label="Category Title"
               rules={{ required: true }}
             />
           </div>
@@ -75,7 +76,7 @@ function NewItemForm({ props }) {
               errors={errors}
               maxLength={300}
               name="description"
-              label="Item Description"
+              label="Category Description"
               rules={{ required: true }}
             />
           </div>
@@ -85,4 +86,4 @@ function NewItemForm({ props }) {
   );
 }
 
-export default NewItemForm;
+export default NewCategoryForm;

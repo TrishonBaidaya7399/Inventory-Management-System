@@ -13,3 +13,12 @@
   top: 0;
   z-index: 1000;
 }
+.white_spin {
+  .ant-spin-dot-holder {
+    .ant-spin-dot {
+      .ant-spin-dot-item {
+        background-color: $whiteColor;
+      }
+    }
+  }
+}

@@ -1,13 +1,15 @@
 import React from "react";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { X } from "lucide-react";
+import { Spin } from "antd";
 
 function GlobalForm({
   handleCancel,
   handleSubmit,
-  onSubmit,
   formTitle,
   children,
+  submitButtonTitle = "Save",
+  submitting = false,
   ...rest
 }) {
   return (
@@ -19,13 +21,14 @@ function GlobalForm({
         </button>
       </div>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit}
         className="flex flex-col h-full justify-between"
       >
         {children}
         <div className="footer_part h-[70px] px-8 bg-white flex items-center justify-start gap-6">
           <PrimaryButton
-            title="Save"
+            title={submitting ? "Saving..." : submitButtonTitle}
+            icon={submitting && <Spin className="white_spin" />}
             type="submit"
             className="px-6 py-2 rounded-md text-xl font-semibold text-white border-2 border-blue-500"
           />
