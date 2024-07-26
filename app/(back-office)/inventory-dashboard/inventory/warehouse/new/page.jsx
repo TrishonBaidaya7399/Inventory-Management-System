@@ -50,7 +50,7 @@ function NewWarehouseFrom({ props }) {
   }
 
   return (
-    <div className="add_new_warehouse_form_container">
+    <div className="add_new_form_container">
       <GlobalForm
         formTitle={"New Warehouse"}
         handleCancel={handleBack}

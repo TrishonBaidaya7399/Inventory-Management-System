@@ -22,3 +22,14 @@
     }
   }
 }
+.add_new_form_container {
+  .global_form_container {
+    form {
+      .ant-card {
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+}

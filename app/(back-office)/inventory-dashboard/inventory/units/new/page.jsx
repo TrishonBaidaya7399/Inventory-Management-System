@@ -50,7 +50,7 @@ function NewUnitFrom({ props }) {
   }
 
   return (
-    <div className="add_new_unit_form_container">
+    <div className="add_new_form_container">
       <GlobalForm
         formTitle={"New Unit"}
         handleCancel={handleBack}

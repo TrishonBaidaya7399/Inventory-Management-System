@@ -51,7 +51,7 @@ function NewBrandFrom({ props }) {
   }
 
   return (
-    <div className="add_new_brand_form_container">
+    <div className="add_new_form_container">
       <GlobalForm
         formTitle={"New Brand"}
         handleCancel={handleBack}

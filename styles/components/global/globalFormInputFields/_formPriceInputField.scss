@@ -1,0 +1,12 @@
+.globalPriceInputField{
+    .globalPriceInputField_controller {
+        .ant-input-number {
+          .ant-input-number-input-wrap {
+            height: 100%;
+            input {
+              height: 100%;
+            }
+          }
+        }
+      }
+}

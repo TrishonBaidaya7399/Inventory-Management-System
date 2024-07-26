@@ -3,6 +3,7 @@ import PrimaryButton from "@/components/global/Buttons/PrimaryButton";
 import GlobalForm from "@/components/global/GlobalForm/GlobalForm";
 import FormInputField from "@/components/global/GlobalFormInputFields/FormInputField";
 import FormNumberInputField from "@/components/global/GlobalFormInputFields/FormNumberInputField";
+import FormPriceInputField from "@/components/global/GlobalFormInputFields/FormPriceInputField";
 import FormSelectField from "@/components/global/GlobalFormInputFields/FormSelectField";
 import FormTextAreaField from "@/components/global/GlobalFormInputFields/FormTextAreaField";
 import { message } from "antd";
@@ -49,9 +50,16 @@ function NewItemForm({ props }) {
       message.error(error.message);
     }
   }
-
+  const currencyOptions = [
+    { value: "BDT", label: "৳" },
+    { value: "INR", label: "₹" },
+    { value: "USD", label: "$" },
+    { value: "EUR", label: "€" },
+    { value: "GBP", label: "£" },
+    { value: "CNY", label: "¥" },
+  ];
   return (
-    <div className="add_new_item_form_container">
+    <div className="add_new_form_container">
       <GlobalForm
         formTitle={"New Item"}
         handleCancel={handleBack}
@@ -100,15 +108,74 @@ function NewItemForm({ props }) {
               maxLength={50}
               name="sku"
               label="SKU"
-              rules={{ required: true }}
+              rules={{ required: false }}
             />
-              <FormNumberInputField
+            <FormNumberInputField
               control={control}
               errors={errors}
               maxLength={50}
               name="quantity"
               label="Quantity"
               maxValue={"50"}
+              rules={{ required: true }}
+            />
+          </div>
+          <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
+            <FormNumberInputField
+              control={control}
+              errors={errors}
+              maxLength={50}
+              name="unit"
+              label="Unit"
+              maxValue={50}
+              rules={{ required: true }}
+            />
+            <FormSelectField
+              required={true}
+              options={[
+                {
+                  value: "puma",
+                  label: "Puma",
+                  logo: "/images/dashboard/inventory/item.png",
+                },
+                {
+                  value: "adidus",
+                  label: "Adidus",
+                  logo: "/images/dashboard/inventory/item.png",
+                },
+                {
+                  value: "nike",
+                  label: "Nike",
+                  logo: "/images/dashboard/inventory/item.png",
+                },
+              ]}
+              control={control}
+              errors={errors}
+              name="brand"
+              label="Brand"
+              mode="single"
+              rules={{ required: false }}
+            />
+          </div>
+          <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
+            <FormPriceInputField
+              control={control}
+              errors={errors}
+              defaultValue={100}
+              maxValue={1000}
+              currencyOptions={currencyOptions}
+              name="unitPrice"
+              label="Unit Price"
+              rules={{ required: true }}
+            />
+            <FormPriceInputField
+              control={control}
+              errors={errors}
+              defaultValue={100}
+              maxValue={1000}
+              currencyOptions={currencyOptions}
+              name="costPrice"
+              label="Cost Price"
               rules={{ required: true }}
             />
           </div>

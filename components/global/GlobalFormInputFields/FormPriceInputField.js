@@ -1,9 +1,11 @@
-import { InputNumber } from "antd";
+import { InputNumber, Select } from "antd";
 import React from "react";
 import { Controller } from "react-hook-form";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 
-function FormNumberInputField({
+const { Option } = Select;
+
+function FormPriceInputField({
   control,
   name,
   label,
@@ -14,6 +16,8 @@ function FormNumberInputField({
   maxValue,
   className = "w-full",
   placeholder = `Enter ${label}`,
+  currencyOptions = [],
+  defaultCurrency = "BDT",
 }) {
   const increment = (onChange, value) => {
     if (value < maxValue) {
@@ -22,29 +26,27 @@ function FormNumberInputField({
   };
 
   const decrement = (onChange, value) => {
-    if (value > 1) {
+    if (value > 0) {
+      // Assuming 0 is the minimum value for price
       onChange(value - 1);
     }
   };
 
   return (
-    <div className={`globalFormInputField ${className}`}>
+    <div className={`globalPriceInputField ${className}`}>
       <label
         className="pb-4 flex items-center gap-2 text-lg font-semibold"
         htmlFor={name}
       >
         {label}
         {required && <p className="text-red-600">*</p>}
-        <span className="text-sm text-gray-500">
-          {maxValue && `(Max: ${maxValue})`}
-        </span>
       </label>
       <Controller
         name={name}
         control={control}
         rules={rules}
         render={({ field }) => (
-          <div className="globalFormInputField_controller flex items-center border-2 border-gray-200 rounded-md h-12">
+          <div className="globalPriceInputField_controller flex items-center border-2 border-gray-200 rounded-md h-12">
             <button
               type="button"
               className="p-2 border-r-2 border-gray-200"
@@ -69,6 +71,24 @@ function FormNumberInputField({
             >
               <PlusOutlined />
             </button>
+            <Select
+              className="currency_select"
+              defaultValue={defaultCurrency}
+              style={{
+                width: 80,
+                border: "none",
+                marginRight: "10px",
+              }}
+              onChange={(value) =>
+                field.onChange({ ...field.value, currency: value })
+              }
+            >
+              {currencyOptions.map((option) => (
+                <Option key={option.value} value={option.value}>
+                  {option.label}
+                </Option>
+              ))}
+            </Select>
           </div>
         )}
       />
@@ -81,4 +101,4 @@ function FormNumberInputField({
   );
 }
 
-export default FormNumberInputField;
+export default FormPriceInputField;

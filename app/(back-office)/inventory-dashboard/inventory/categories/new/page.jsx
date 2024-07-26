@@ -51,7 +51,7 @@ function NewCategoryForm({ props }) {
   }
 
   return (
-    <div className="add_new_category_form_container">
+    <div className="add_new_form_container">
       <GlobalForm
         formTitle={"New Category"}
         handleCancel={handleBack}
