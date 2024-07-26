@@ -16,6 +16,9 @@
 @import "./components/dashboard/searchInput";
 @import "./components/dashboard/inventory/inventory_header";
 
+// components-global
+@import "./components/global/globalFormInputFields/formNumberInputField";
+
 // back office pages
 @import "./back-office/layout";
 

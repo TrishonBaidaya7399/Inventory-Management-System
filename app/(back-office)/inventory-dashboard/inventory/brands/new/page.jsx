@@ -4,6 +4,7 @@ import GlobalForm from "@/components/global/GlobalForm/GlobalForm";
 import FormInputField from "@/components/global/GlobalFormInputFields/FormInputField";
 import FormSelectField from "@/components/global/GlobalFormInputFields/FormSelectField";
 import FormTextAreaField from "@/components/global/GlobalFormInputFields/FormTextAreaField";
+import UploadFile from "@/components/global/GlobalFormInputFields/UploadFile";
 import { message } from "antd";
 import Card from "antd/es/card/Card";
 import { X } from "lucide-react";
@@ -69,16 +70,16 @@ function NewBrandFrom({ props }) {
               rules={{ required: true }}
             />
           </div>
-          {/* <div className="pt-6">
-            <FormInputField
+          <div className="pt-6">
+            <UploadFile
               control={control}
+              name="logo"
+              label="Upload Brand's Logo"
+              multiple={true}
+              acceptedFormats={[".png", ".jpg", ".jpeg"]}
               errors={errors}
-              maxLength={250}
-              name="description"
-              label="Brand Description"
-              rules={{ required: true }}
             />
-          </div> */}
+          </div>
         </Card>
       </GlobalForm>
     </div>

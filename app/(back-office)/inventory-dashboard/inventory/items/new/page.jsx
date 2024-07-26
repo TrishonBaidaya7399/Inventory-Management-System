@@ -2,6 +2,7 @@
 import PrimaryButton from "@/components/global/Buttons/PrimaryButton";
 import GlobalForm from "@/components/global/GlobalForm/GlobalForm";
 import FormInputField from "@/components/global/GlobalFormInputFields/FormInputField";
+import FormNumberInputField from "@/components/global/GlobalFormInputFields/FormNumberInputField";
 import FormSelectField from "@/components/global/GlobalFormInputFields/FormSelectField";
 import FormTextAreaField from "@/components/global/GlobalFormInputFields/FormTextAreaField";
 import { message } from "antd";
@@ -59,13 +60,55 @@ function NewItemForm({ props }) {
         submitButtonTitle="Add New Item"
       >
         <Card className="w-full max-w-3xl mx-auto my-6 h-fit max-h-70 overflow-auto">
-          <div className="">
+          <div className="flex items-center gap-6 flex-col lg:flex-row">
             <FormInputField
               control={control}
               errors={errors}
               maxLength={50}
-              name="title"
-              label="Item Title"
+              name="name"
+              label="Item Name"
+              rules={{ required: true }}
+            />
+            <FormSelectField
+              required={true}
+              options={[
+                {
+                  value: "electronic",
+                  label: "Electronic",
+                },
+                {
+                  value: "clothing",
+                  label: "Clothing",
+                },
+                {
+                  value: "groceries",
+                  label: "Groceries",
+                },
+              ]}
+              control={control}
+              errors={errors}
+              name="category"
+              label="Item category"
+              mode="multiple"
+              rules={{ required: true }}
+            />
+          </div>
+          <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
+            <FormInputField
+              control={control}
+              errors={errors}
+              maxLength={50}
+              name="sku"
+              label="SKU"
+              rules={{ required: true }}
+            />
+              <FormNumberInputField
+              control={control}
+              errors={errors}
+              maxLength={50}
+              name="quantity"
+              label="Quantity"
+              maxValue={"50"}
               rules={{ required: true }}
             />
           </div>
@@ -75,7 +118,7 @@ function NewItemForm({ props }) {
               errors={errors}
               maxLength={300}
               name="description"
-              label="Item Description"
+              label="Description"
               rules={{ required: true }}
             />
           </div>

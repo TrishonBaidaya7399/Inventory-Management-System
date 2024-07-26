@@ -41,7 +41,7 @@ function FormTextAreaField({
           />
         )}
       />
-      {errors[name] && (
+      {errors[`${name}`] && (
         <p className="error-message text-red-600 font-semibold">
           {label} is required
         </p>

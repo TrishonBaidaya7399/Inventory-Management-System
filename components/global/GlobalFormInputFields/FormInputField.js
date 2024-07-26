@@ -25,7 +25,7 @@ function FormInputField({
         rules={rules}
         render={({ field }) => (
           <Input
-            className="rounded-md border-2 border-gray-200 focus:border-blue-100 focus:border-[1px]"
+            className="rounded-md h-12 border-2 border-gray-200 focus:border-blue-100 focus:border-[1px]"
             {...field}
             type={type}
             maxLength={maxLength}
@@ -38,7 +38,7 @@ function FormInputField({
           />
         )}
       />
-      {errors[name] && (
+      {errors[`${name}`] && (
         <p className="error-message text-red-600 font-semibold">
           {label} is required
         </p>

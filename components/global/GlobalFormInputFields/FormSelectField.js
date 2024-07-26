@@ -51,7 +51,7 @@ function FormSelectField({
           />
         )}
       />
-      {errors[name] && (
+      {errors[`${name}`] && (
         <p className="error-message text-red-600 font-semibold">
           This field is required
         </p>
