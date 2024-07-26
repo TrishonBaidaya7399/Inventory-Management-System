@@ -1,24 +1,36 @@
-import { Input, Select } from "antd";
-import React from "react";
+import { Checkbox, Input, Select } from "antd";
+import React, { useState } from "react";
 import { Controller } from "react-hook-form";
 
 function FormSelectField({
   control,
+  mode = "single",
   name,
   label,
   rules,
   errors,
-  mode = "single",
   required = true,
   options,
   className = "w-full",
   placeholder = `Select ${label}`,
   defaultValue = "Select",
 }) {
+  const [multi, setMulti] = useState(false);
   return (
     <div className={className}>
-      <label className="pb-4 flex gap-2 text-lg font-semibold" htmlFor={name}>
-        {label} {required && <p className="text-red-600">*</p>}
+      <label
+        className="pb-4 flex justify-between items-center gap-2 text-lg font-semibold"
+        htmlFor={name}
+      >
+        <p>
+          {label} {required && <span className="text-red-600">*</span>}
+        </p>
+        <div
+          className={`flex items-center gap-2 ${mode === "single" && "hidden"}`}
+        >
+          <p className="text-sm">Multi Select</p>
+          <Checkbox onChange={() => setMulti(!multi)} />
+        </div>
       </label>
       <Controller
         name={name}
@@ -26,7 +38,7 @@ function FormSelectField({
         rules={rules}
         render={({ field }) => (
           <Select
-            mode={mode}
+            mode={multi === true ? "multiple" : "single"}
             defaultValue={defaultValue}
             placeholder={placeholder}
             style={{
@@ -41,7 +53,7 @@ function FormSelectField({
       />
       {errors[name] && (
         <p className="error-message text-red-600 font-semibold">
-          {label} is required
+          This field is required
         </p>
       )}
     </div>

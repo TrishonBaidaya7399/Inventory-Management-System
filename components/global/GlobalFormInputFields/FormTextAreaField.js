@@ -12,7 +12,7 @@ function FormTextAreaField({
   required = true,
   maxLength,
   className = "w-full",
-  placeholder = `Type your ${label}`,
+  placeholder = `Type ${label}`,
 }) {
   return (
     <div className={className}>

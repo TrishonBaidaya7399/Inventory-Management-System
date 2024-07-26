@@ -35,7 +35,7 @@ function GlobalForm({
           <PrimaryButton
             title="Cancel"
             onClick={handleCancel}
-            className="bg-gray-200 border-gray-300 border-2 px-6 py-2 rounded-md text-xl font-semibold text-gray-500"
+            className="bg-gray-200 border-gray-300 border-2 px-6 py-2 rounded-md text-xl font-semibold text-gray-800"
           />
         </div>
       </form>

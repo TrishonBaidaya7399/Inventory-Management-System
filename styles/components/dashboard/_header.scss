@@ -37,17 +37,18 @@
       border-left: 2px solid $gray2;
       border-right: 2px solid $gray2;
     }
-    .right_3 {
-    }
-    .userDropdown{
-        .userName{
-            color: $black;
-            font-size: 20px;
-        }
-        .dropdown_box{
-            background-color: $blueColor !important;
-            color: $whiteColor;
-        }
+    .userDropdown {
+      .userName {
+        color: $black;
+        font-size: 20px;
+      }
+      .dropdown_box {
+        background-color: $blueColor !important;
+        color: $whiteColor;
+      }
     }
   }
+}
+.topbar_dropdown_box {
+  z-index: 9999;
 }

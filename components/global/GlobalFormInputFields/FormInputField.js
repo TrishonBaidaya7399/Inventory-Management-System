@@ -12,7 +12,7 @@ function FormInputField({
   type = "text",
   maxLength,
   className = "w-full",
-  placeholder = `Type your ${label}`,
+  placeholder = `Type ${label}`,
 }) {
   return (
     <div className={className}>

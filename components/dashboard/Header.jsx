@@ -16,7 +16,7 @@ function Header() {
     <div className="top_header_part">
       <div className="left ">
         <button>
-          <History className="hover:text-blue-600"/>
+          <History className="hover:text-blue-600" />
         </button>
         <SearchInput className="searchInput transition-all ease-in-out hover:w-[400px] duration-50 hover:border-blue-600" />
       </div>
@@ -48,7 +48,7 @@ function Header() {
             <PopoverPanel
               transition
               anchor="bottom"
-              className="dropdown_box mt-4 pl-4 divide-y bg-slate-900 divide-white/5 rounded-xl  text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+              className="dropdown_box topbar_dropdown_box mt-4 pl-4 divide-y bg-slate-900 divide-white/5 rounded-xl  text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
             >
               <div className="p-3 w-[250px] mr-4">
                 <a
@@ -100,7 +100,7 @@ function Header() {
             />
           </button>
           <button className="grid">
-            <LayoutGrid/>
+            <LayoutGrid />
           </button>
         </div>
       </div>

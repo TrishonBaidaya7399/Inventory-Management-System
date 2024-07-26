@@ -47,7 +47,7 @@ function Inventory() {
           subTitle="Create standalone items and services that you buy and sell"
           href="/inventory-dashboard/inventory/items/new"
           buttonTitle="New Item"
-          onClick={handleNewItem}
+          // onClick={handleNewItem}
         />
         <InventoryCard
           title="Categories"
@@ -55,23 +55,23 @@ function Inventory() {
           subTitle="Bundle different items together and sell them as kit"
           href="/inventory-dashboard/inventory/categories/new"
           buttonTitle="New Category"
-          onClick={handleCategory}
+          // onClick={handleCategory}
         />
         <InventoryCard
           title="Brands"
-          image="/images/dashboard/inventory/price_list.png"
+          image="/images/dashboard/inventory/brands_logo.png"
           subTitle="Tweak your item prices for specific contacts of transactions"
           href="/inventory-dashboard/inventory/brands/new"
           buttonTitle="New Brand"
-          onClick={handleBrand}
+          // onClick={handleBrand}
         />
         <InventoryCard
           title="Warehouse"
-          image="/images/dashboard/inventory/price_list.png"
+          image="/images/dashboard/inventory/warehouse_logo.png"
           subTitle="Tweak your item prices for specific contacts of transactions"
           href="/inventory-dashboard/inventory/warehouse/new"
           buttonTitle="New Warehouse"
-          onClick={handleWarehouse}
+          // onClick={handleWarehouse}
         />
         <InventoryCard
           title="Units"
@@ -79,7 +79,7 @@ function Inventory() {
           subTitle="Tweak your item prices for specific contacts of transactions"
           href="/inventory-dashboard/inventory/units/new"
           buttonTitle="New Unit"
-          onClick={handleUnit}
+          // onClick={handleUnit}
         />
       </div>
     </div>

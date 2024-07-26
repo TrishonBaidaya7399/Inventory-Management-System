@@ -51,9 +51,9 @@ function NewCategoryForm({ props }) {
   }
 
   return (
-    <div className="add_new_item_form_container">
+    <div className="add_new_category_form_container">
       <GlobalForm
-        formTitle={"New Item"}
+        formTitle={"New Category"}
         handleCancel={handleBack}
         handleSubmit={handleSubmit(onSubmit)}
         submitting={submitting}

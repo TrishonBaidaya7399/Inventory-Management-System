@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 
-function NewItemForm({ props }) {
+function NewUnitFrom({ props }) {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const handleBack = () => {
@@ -30,7 +30,7 @@ function NewItemForm({ props }) {
     console.log(data);
     const baseURL = "http://localhost:3000";
     try {
-      const response = await fetch(`${baseURL}/api/items`, {
+      const response = await fetch(`${baseURL}/api/units`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function NewItemForm({ props }) {
       });
       if (response.ok) {
         setSubmitting(false);
-        message.success("New Item Created Successfully!");
+        message.success("New Unit Created Successfully!");
         reset();
       }
     } catch (error) {
@@ -50,13 +50,13 @@ function NewItemForm({ props }) {
   }
 
   return (
-    <div className="add_new_item_form_container">
+    <div className="add_new_unit_form_container">
       <GlobalForm
-        formTitle={"New Item"}
+        formTitle={"New Unit"}
         handleCancel={handleBack}
         handleSubmit={handleSubmit(onSubmit)}
         submitting={submitting}
-        submitButtonTitle="Add New Item"
+        submitButtonTitle="Add New Unit"
       >
         <Card className="w-full max-w-3xl mx-auto my-6 h-fit max-h-70 overflow-auto">
           <div className="">
@@ -64,18 +64,38 @@ function NewItemForm({ props }) {
               control={control}
               errors={errors}
               maxLength={50}
-              name="title"
-              label="Item Title"
+              name="name"
+              label="Unit Name"
               rules={{ required: true }}
             />
           </div>
           <div className="pt-6">
-            <FormTextAreaField
+            <FormInputField
               control={control}
               errors={errors}
-              maxLength={300}
-              name="description"
-              label="Item Description"
+              maxLength={250}
+              name="abbreviation"
+              label="Unit Abbreviation"
+              rules={{ required: true }}
+            />
+          </div>
+          <div className="pt-6">
+          <FormSelectField
+              required={true}
+              options={[
+                {
+                  value: true,
+                  label: "Yes",
+                },
+                {
+                  value: false,
+                  label: "No",
+                },
+              ]}
+              control={control}
+              errors={errors}
+              name="defaultUnit"
+              label="Is this a default unit?"
               rules={{ required: true }}
             />
           </div>
@@ -85,4 +105,4 @@ function NewItemForm({ props }) {
   );
 }
 
-export default NewItemForm;
+export default NewUnitFrom;
