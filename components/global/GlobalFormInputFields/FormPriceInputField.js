@@ -94,7 +94,7 @@ function FormPriceInputField({
       />
       {errors[`${name}`] && (
         <p className="error-message text-red-600 font-semibold">
-          {label} is required
+          {label ? label : "This"} is required
         </p>
       )}
     </div>
