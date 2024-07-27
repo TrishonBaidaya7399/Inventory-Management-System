@@ -9,15 +9,12 @@ import FormPriceInputField from "@/components/global/GlobalFormInputFields/FormP
 import FormSelectField from "@/components/global/GlobalFormInputFields/FormSelectField";
 import FormTextAreaField from "@/components/global/GlobalFormInputFields/FormTextAreaField";
 import UploadFile from "@/components/global/GlobalFormInputFields/UploadFile";
-import { message } from "antd";
-import Card from "antd/es/card/Card";
-import { X } from "lucide-react";
-import { Fascinate_Inline } from "next/font/google";
+import { message, Card } from "antd";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
-function NewItemForm({ props }) {
+function NewItemForm() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const handleBack = () => {
@@ -54,6 +51,7 @@ function NewItemForm({ props }) {
       message.error(error.message);
     }
   }
+
   const currencyOptions = [
     { value: "BDT", label: "৳" },
     { value: "INR", label: "₹" },
@@ -62,6 +60,7 @@ function NewItemForm({ props }) {
     { value: "GBP", label: "£" },
     { value: "CNY", label: "¥" },
   ];
+
   const weightOptions = [
     { value: "kg", label: "kg" },
     { value: "g", label: "g" },
@@ -70,6 +69,7 @@ function NewItemForm({ props }) {
     { value: "mg", label: "mg" },
     { value: "ton", label: "ton" },
   ];
+
   const sizeOptions = [
     { value: "m", label: "m" },
     { value: "cm", label: "cm" },
@@ -100,18 +100,9 @@ function NewItemForm({ props }) {
             <FormSelectField
               required={true}
               options={[
-                {
-                  value: "electronic",
-                  label: "Electronic",
-                },
-                {
-                  value: "clothing",
-                  label: "Clothing",
-                },
-                {
-                  value: "groceries",
-                  label: "Groceries",
-                },
+                { value: "electronic", label: "Electronic" },
+                { value: "clothing", label: "Clothing" },
+                { value: "groceries", label: "Groceries" },
               ]}
               control={control}
               errors={errors}
@@ -153,21 +144,9 @@ function NewItemForm({ props }) {
             <FormSelectField
               required={true}
               options={[
-                {
-                  value: "puma",
-                  label: "Puma",
-                  logo: "/images/dashboard/inventory/item.png",
-                },
-                {
-                  value: "adidus",
-                  label: "Adidus",
-                  logo: "/images/dashboard/inventory/item.png",
-                },
-                {
-                  value: "nike",
-                  label: "Nike",
-                  logo: "/images/dashboard/inventory/item.png",
-                },
+                { value: "puma", label: "Puma" },
+                { value: "adidus", label: "Adidus" },
+                { value: "nike", label: "Nike" },
               ]}
               control={control}
               errors={errors}
@@ -218,7 +197,7 @@ function NewItemForm({ props }) {
               rules={{ required: true }}
             />
           </div>
-          <div className=" pt-6">
+          <div className="pt-6">
             <FormSelectField
               required={true}
               options={[
@@ -236,7 +215,7 @@ function NewItemForm({ props }) {
                 },
                 {
                   value: "PlummyFashionsLimited",
-                  title: "Ha-Meem Group",
+                  title: "Plummy Fashions Limited",
                   location:
                     "Unit -502, Concord Tower, 113 Kazi Nazrul Islam Avenue, Dhaka – 1000",
                 },
@@ -248,7 +227,7 @@ function NewItemForm({ props }) {
                 },
                 {
                   value: "DBLGroup",
-                  title: "Ha-Meem Group",
+                  title: "DBL Group",
                   location:
                     "23/1 Panthapath Link Road, GMEA Complex, Kawran Bazar, Dhaka – 1215, Bangladesh.",
                 },
@@ -288,7 +267,7 @@ function NewItemForm({ props }) {
               defaultCurrency="kg"
             />
           </div>
-          {/* <div className="pt-6">
+          <div className="pt-6">
             <BarcodeGenerator
               name="barcode"
               label="Generate Barcode"
@@ -299,8 +278,7 @@ function NewItemForm({ props }) {
               backgroundColor="transparent"
               placeholder={"Write a unique barcode name"}
             />
-          </div> */}
-          {/* ------------------------------------------------------ */}
+          </div>
           <div className="pt-6">
             <FormTextAreaField
               control={control}

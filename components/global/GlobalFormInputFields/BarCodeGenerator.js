@@ -17,23 +17,19 @@ const BarcodeGenerator = ({
   placeholder,
 }) => {
   const [barcodeValue, setBarcodeValue] = useState("");
-  const { inputRef } = useBarcode({
-    value: barcodeValue,
-    options: {
-      background: backgroundColor,
-    },
-  });
+  const inputRef = useRef(null);
+  const svgRef = useRef(null);
 
   useEffect(() => {
-    if (svgRef.current) {
-      svgRef.current.innerHTML = ""; 
-      svgRef.current.appendChild(inputRef.current); 
+    if (inputRef.current) {
+      const { value, background, options } = useBarcode({
+        value: barcodeValue,
+        options: { background: backgroundColor },
+      });
+      svgRef.current.innerHTML = value;
     }
-  }, [barcodeValue, inputRef]);
+  }, [barcodeValue, backgroundColor]);
 
-  const handleBarcodeChange = (value) => {
-    setBarcodeValue(value);
-  };
   return (
     <div className={`barcodeGenerator ${className}`}>
       <label className="pb-4 flex gap-2 text-lg font-semibold" htmlFor={name}>
@@ -63,7 +59,7 @@ const BarcodeGenerator = ({
             />
           )}
         />
-        <div ref={inputRef} />
+        <div ref={svgRef} />
       </div>
       {errors[`${name}`] && (
         <p className="error-message text-red-600 font-semibold">
