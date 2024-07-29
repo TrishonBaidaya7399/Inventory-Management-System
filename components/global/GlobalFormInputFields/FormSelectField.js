@@ -59,8 +59,8 @@ function FormSelectField({
                 className="flex items-center flex-row gap-2"
               >
                 <div className="flex flex-row items-center gap-2">
-                  <div>
-                    {option.logo && (
+                  {option.logo && (
+                    <div>
                       <Image
                         height={20}
                         width={20}
@@ -68,8 +68,8 @@ function FormSelectField({
                         src={option?.logo}
                         className="rounded-full border-[1px] border-gray-500"
                       />
-                    )}
-                  </div>
+                    </div>
+                  )}
                   <p>{option?.label}</p>
                 </div>
               </Option>

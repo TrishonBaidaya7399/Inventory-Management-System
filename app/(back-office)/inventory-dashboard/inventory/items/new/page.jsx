@@ -87,219 +87,255 @@ function NewItemForm() {
         submitting={submitting}
         submitButtonTitle="Add New Item"
       >
-        <Card className="w-full max-w-3xl mx-auto my-6 h-fit max-h-70 overflow-auto">
-          <div className="flex items-center gap-6 flex-col lg:flex-row">
-            <FormInputField
-              control={control}
-              errors={errors}
-              maxLength={50}
-              name="name"
-              label="Item Name"
-              rules={{ required: true }}
-            />
-            <FormSelectField
-              required={true}
-              options={[
-                { value: "electronic", label: "Electronic" },
-                { value: "clothing", label: "Clothing" },
-                { value: "groceries", label: "Groceries" },
-              ]}
-              control={control}
-              errors={errors}
-              name="category"
-              label="Item category"
-              mode="multiple"
-              rules={{ required: true }}
-            />
-          </div>
-          <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
-            <FormInputField
-              control={control}
-              errors={errors}
-              maxLength={50}
-              name="sku"
-              label="SKU"
-              rules={{ required: false }}
-            />
-            <FormNumberInputField
-              control={control}
-              errors={errors}
-              maxLength={50}
-              name="quantity"
-              label="Quantity"
-              maxValue={"50"}
-              rules={{ required: true }}
-            />
-          </div>
-          <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
-            <FormNumberInputField
-              control={control}
-              errors={errors}
-              maxLength={50}
-              name="unit"
-              label="Unit"
-              maxValue={50}
-              rules={{ required: true }}
-            />
-            <FormSelectField
-              required={true}
-              options={[
-                { value: "puma", label: "Puma" },
-                { value: "adidus", label: "Adidus" },
-                { value: "nike", label: "Nike" },
-              ]}
-              control={control}
-              errors={errors}
-              name="brand"
-              label="Brand"
-              mode="single"
-              rules={{ required: false }}
-            />
-          </div>
-          <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
-            <FormPriceInputField
-              control={control}
-              errors={errors}
-              defaultValue={100}
-              maxValue={1000}
-              currencyOptions={currencyOptions}
-              name="unitPrice"
-              label="Unit Price"
-              rules={{ required: true }}
-            />
-            <FormPriceInputField
-              control={control}
-              errors={errors}
-              defaultValue={100}
-              maxValue={1000}
-              currencyOptions={currencyOptions}
-              name="costPrice"
-              label="Cost Price"
-              rules={{ required: true }}
-            />
-          </div>
-          <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
-            <FormInputField
-              control={control}
-              errors={errors}
-              maxLength={150}
-              name="supplier"
-              label="Supplier"
-              rules={{ required: false }}
-            />
-            <FormNumberInputField
-              control={control}
-              errors={errors}
-              maxLength={10}
-              name="reorderUnit"
-              label="Reorder Unit"
-              maxValue={10}
-              rules={{ required: true }}
-            />
-          </div>
-          <div className="pt-6">
-            <FormSelectField
-              required={true}
-              options={[
-                {
-                  value: "HaMeemGroup",
-                  title: "Ha-Meem Group",
-                  location:
-                    "Phoenix Tower (4th Floor), 407, Tejgaon Industrial Area, Dhaka-1215, Bangladesh.",
-                },
-                {
-                  value: "AnantaGroup",
-                  title: "Ananta Group",
-                  location:
-                    "House 20, Rd No 99, Gulshan-2 Dhaka 1212, Bangladesh",
-                },
-                {
-                  value: "PlummyFashionsLimited",
-                  title: "Plummy Fashions Limited",
-                  location:
-                    "Unit -502, Concord Tower, 113 Kazi Nazrul Islam Avenue, Dhaka – 1000",
-                },
-                {
-                  value: "StandardGroup",
-                  title: "Standard Group",
-                  location:
-                    "Civil Engineers Bhaban-69, Mohakhali C/A, Dhaka 1212, Bangladesh.",
-                },
-                {
-                  value: "DBLGroup",
-                  title: "DBL Group",
-                  location:
-                    "23/1 Panthapath Link Road, GMEA Complex, Kawran Bazar, Dhaka – 1215, Bangladesh.",
-                },
-              ]}
-              control={control}
-              errors={errors}
-              name="warehouse"
-              label="Warehouse"
-              mode="multiple"
-              rules={{ required: false }}
-            />
-          </div>
-          <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
-            <FormDimensionsInputField
-              control={control}
-              name="dimensions"
-              label="Dimensions (height, width)"
-              rules={{ required: true }}
-              errors={errors}
-              required={true}
-              defaultValue={{ height: 1, width: 1 }}
-              maxValue={1000}
-              className="w-full"
-              placeholder="Enter dimensions"
-              unitOptions={sizeOptions}
-              defaultUnit={"in"}
-            />
-            <FormPriceInputField
-              control={control}
-              errors={errors}
-              defaultValue={1}
-              maxValue={""}
-              currencyOptions={weightOptions}
-              name="weight"
-              label="Weight"
-              rules={{ required: true }}
-              defaultCurrency="kg"
-            />
-          </div>
-          <div className="pt-6">
-            <BarcodeGenerator
-              name="barcode"
-              label="Generate Barcode"
-              rules={{ required: false }}
-              control={control}
-              errors={errors}
-              maxLength={50}
-              backgroundColor="transparent"
-              placeholder={"Write a unique barcode name"}
-            />
-          </div>
-          <div className="pt-6">
-            <FormTextAreaField
-              control={control}
-              errors={errors}
-              maxLength={300}
-              name="description"
-              label="Description"
-              rules={{ required: true }}
-            />
-          </div>
-          <div className="pt-6">
-            <UploadFile
-              control={control}
-              name="images"
-              label="Upload Images"
-              multiple={true}
-              acceptedFormats={[".png", ".jpg", ".jpeg"]}
-              errors={errors}
-            />
-          </div>
-        </Card>
+        <div className="flex items-center gap-6 flex-col lg:flex-row">
+          <FormInputField
+            control={control}
+            errors={errors}
+            maxLength={50}
+            name="name"
+            label="Item Name"
+            rules={{ required: true }}
+          />
+          <FormSelectField
+            required={true}
+            options={[
+              { value: "electronic", label: "Electronic" },
+              { value: "clothing", label: "Clothing" },
+              { value: "groceries", label: "Groceries" },
+            ]}
+            control={control}
+            errors={errors}
+            name="category"
+            label="Item category"
+            mode="multiple"
+            rules={{ required: true }}
+          />
+        </div>
+        <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
+          <FormInputField
+            control={control}
+            errors={errors}
+            maxLength={50}
+            name="sku"
+            label="SKU"
+            rules={{ required: false }}
+          />
+          <FormNumberInputField
+            control={control}
+            errors={errors}
+            maxLength={50}
+            name="quantity"
+            label="Quantity"
+            maxValue={"50"}
+            rules={{ required: true }}
+          />
+        </div>
+        <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
+          <FormNumberInputField
+            control={control}
+            errors={errors}
+            maxLength={50}
+            name="unit"
+            label="Unit"
+            maxValue={50}
+            rules={{ required: true }}
+          />
+          <FormSelectField
+            required={true}
+            options={[
+              {
+                value: "puma",
+                label: "Puma",
+                logo: "/images/brands/puma.jpg",
+              },
+              {
+                value: "adidas",
+                label: "Adidas",
+                logo: "/images/brands/adidas.png",
+              },
+              {
+                value: "nike",
+                label: "Nike",
+                logo: "/images/brands/nike.jpg",
+              },
+            ]}
+            control={control}
+            errors={errors}
+            name="brand"
+            label="Brand"
+            mode="single"
+            rules={{ required: false }}
+          />
+        </div>
+        <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
+          <FormPriceInputField
+            control={control}
+            errors={errors}
+            defaultValue={100}
+            maxValue={1000}
+            currencyOptions={currencyOptions}
+            name="unitPrice"
+            label="Unit Price"
+            rules={{ required: true }}
+          />
+          <FormPriceInputField
+            control={control}
+            errors={errors}
+            defaultValue={100}
+            maxValue={1000}
+            currencyOptions={currencyOptions}
+            name="costPrice"
+            label="Cost Price"
+            rules={{ required: true }}
+          />
+        </div>
+        <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
+          <FormSelectField
+            required={true}
+            options={[
+              {
+                label: "Supplier 1",
+                value: "100",
+              },
+              {
+                label: "Supplier 2",
+                value: "200",
+              },
+              {
+                label: "Supplier 3",
+                value: "300",
+              },
+              {
+                label: "Supplier 4",
+                value: "400",
+              },
+            ]}
+            control={control}
+            errors={errors}
+            name="supplierId"
+            label="Supplier"
+            mode="single"
+            rules={{ required: true }}
+          />
+          <FormNumberInputField
+            control={control}
+            errors={errors}
+            maxLength={10}
+            name="reorderUnit"
+            label="Reorder Unit"
+            maxValue={10}
+            rules={{ required: false }}
+          />
+        </div>
+        <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
+          <FormSelectField
+            required={true}
+            options={[
+              {
+                value: "HaMeemGroup",
+                label: "Ha-Meem Group",
+                location:
+                  "Phoenix Tower (4th Floor), 407, Tejgaon Industrial Area, Dhaka-1215, Bangladesh.",
+              },
+              {
+                value: "AnantaGroup",
+                label: "Ananta Group",
+                location:
+                  "House 20, Rd No 99, Gulshan-2 Dhaka 1212, Bangladesh",
+              },
+              {
+                value: "PlummyFashionsLimited",
+                label: "Plummy Fashions Limited",
+                location:
+                  "Unit -502, Concord Tower, 113 Kazi Nazrul Islam Avenue, Dhaka – 1000",
+              },
+              {
+                value: "StandardGroup",
+                label: "Standard Group",
+                location:
+                  "Civil Engineers Bhaban-69, Mohakhali C/A, Dhaka 1212, Bangladesh.",
+              },
+              {
+                value: "DBLGroup",
+                label: "DBL Group",
+                location:
+                  "23/1 Panthapath Link Road, GMEA Complex, Kawran Bazar, Dhaka – 1215, Bangladesh.",
+              },
+            ]}
+            control={control}
+            errors={errors}
+            name="warehouseId"
+            label="Warehouse"
+            mode="multiple"
+            rules={{ required: false }}
+          />
+          <FormInputField
+            control={control}
+            errors={errors}
+            maxLength={150}
+            name="barcode"
+            label="Barcode"
+            rules={{ required: false }}
+          />
+        </div>
+        <div className="flex items-center gap-6 flex-col lg:flex-row pt-6">
+          <FormDimensionsInputField
+            control={control}
+            name="dimensions"
+            label="Dimensions (height, width)"
+            rules={{ required: true }}
+            errors={errors}
+            required={false}
+            defaultValue={{ height: 1, width: 1 }}
+            maxValue={1000}
+            className="w-full"
+            placeholder="Enter dimensions"
+            unitOptions={sizeOptions}
+            defaultUnit={"in"}
+          />
+          <FormPriceInputField
+            control={control}
+            errors={errors}
+            defaultValue={1}
+            maxValue={""}
+            currencyOptions={weightOptions}
+            name="weight"
+            label="Weight"
+            rules={{ required: false }}
+            defaultCurrency="kg"
+          />
+        </div>
+        <div className="pt-6">
+          <FormTextAreaField
+            control={control}
+            errors={errors}
+            maxLength={300}
+            name="description"
+            label="Description"
+            rules={{ required: true }}
+          />
+        </div>
+        <div className="pt-6">
+          <UploadFile
+            control={control}
+            name="images"
+            label="Upload Images"
+            multiple={true}
+            acceptedFormats={[".png", ".jpg", ".jpeg"]}
+            errors={errors}
+          />
+        </div>
+        <div className="py-6">
+          <FormTextAreaField
+            control={control}
+            errors={errors}
+            maxLength={100}
+            name="note"
+            label="Note"
+            rules={{ required: false }}
+            className="text-red-500 font-bold"
+          />
+        </div>
       </GlobalForm>
     </div>
   );

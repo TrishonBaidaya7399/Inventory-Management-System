@@ -3,8 +3,42 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const { title, description } = await request.json();
-    const items = { title, description };
+    const {
+      name,
+      category,
+      sku,
+      quantity,
+      unit,
+      brand,
+      unitPrice,
+      costPrice,
+      supplierId,
+      reorderUnit,
+      warehouseId,
+      barcode,
+      dimensions,
+      weight,
+      description,
+      images,
+      note,
+    } = await request.json();
+    const items = { name,
+      category,
+      sku,
+      quantity,
+      unit,
+      brand,
+      unitPrice,
+      costPrice,
+      supplierId,
+      reorderUnit,
+      warehouseId,
+      barcode,
+      dimensions,
+      weight,
+      description,
+      images,
+      note };
     console.log(items);
     return NextResponse.json(items);
   } catch (error) {

@@ -5,6 +5,8 @@
     background-color: $bgColor;
     min-height: 100%;
     .main_content {
+      height: calc(10vh - 60px);
+      overflow-y: auto;
       @include custom_scrollbar;
     }
   }

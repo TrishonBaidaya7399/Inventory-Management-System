@@ -1,13 +1,37 @@
 .global_form_container {
-  height: calc(100vh - 60px);
-  .inventory_form_container {
-    height: calc(100vh - 130px);
-    overflow-y: auto;
-  }
-  .footer_part {
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: 0;
-    z-index: 1000;
+  height: 92vh;
+  overflow-y: auto;
+  @include custom_scrollbar;
+
+  .ant-card {
+    height: 95%;
+    overflow: hidden;
+
+    .ant-card-body {
+      padding: 0;
+      height: 100%;
+
+      .header_part {
+        border-bottom: 2px solid $line_color;
+        padding: 16px 24px;
+        z-index: 1000;
+      }
+
+      .form_content {
+        // padding: 24px;
+        overflow-y: auto;
+        @include custom_scrollbar;
+        height: calc(100% - 8px);
+        .form_body {
+          padding-inline: 24px;
+        }
+      }
+
+      .footer_part {
+        border-top: 2px solid $line_color;
+        padding: 24px;
+        z-index: 1000;
+      }
+    }
   }
 }
