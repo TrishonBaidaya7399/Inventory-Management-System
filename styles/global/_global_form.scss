@@ -4,7 +4,7 @@
   @include custom_scrollbar;
 
   .ant-card {
-    height: 95%;
+    // height: 95%;
     overflow: hidden;
 
     .ant-card-body {
@@ -21,9 +21,12 @@
         // padding: 24px;
         overflow-y: auto;
         @include custom_scrollbar;
-        height: calc(100% - 8px);
+        height: fit-content;
         .form_body {
           padding-inline: 24px;
+          .ant-card {
+            border: none;
+          }
         }
       }
 

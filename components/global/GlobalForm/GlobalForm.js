@@ -21,7 +21,7 @@ function GlobalForm({
             <X color="red" />
           </button>
         </div>
-        <form onSubmit={handleSubmit} className="form_content flex flex-col justify-between pb-16">
+        <form onSubmit={handleSubmit} className="form_content flex flex-col justify-between">
           <div className="form_body flex-grow py-4">{children}</div>
         <div className="footer_part flex items-center justify-start gap-6">
           <PrimaryButton

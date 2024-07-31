@@ -174,9 +174,9 @@ function DashboardLayout({ children }) {
         </div>
       </Sider>
       <Layout>
-        <main className="main_container w-full bg-slate-100 overflow-hidden ">
+        <main className="main_container w-full bg-slate-100 ">
           <Header className="fixed" />
-          <Content className="main_content">
+          <Content className="main_content  primary_scrollbar">
             {children}
           </Content>
         </main>

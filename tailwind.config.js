@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+import { withUt } from "uploadthing/tw";
+import { withUt } from "uploadthing/tw";
+
+export default withUt({
+  // Your existing Tailwind config
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -17,4 +21,4 @@ module.exports = {
     // },
   },
   plugins: [require("flowbite/plugin"), require("@tailwindcss/forms")],
-};
+});

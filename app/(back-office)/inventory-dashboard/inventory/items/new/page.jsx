@@ -332,7 +332,7 @@ function NewItemForm() {
             maxLength={100}
             name="note"
             label="Note"
-            rules={{ required: false }}
+            required={false}
             className="text-red-500 font-bold"
           />
         </div>

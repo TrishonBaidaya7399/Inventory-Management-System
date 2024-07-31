@@ -28,11 +28,11 @@ function Inventory() {
   };
 
   return (
-    <div>
+    <div className="h-[100vh] overflow-auto">
       <div className="sticky header_part">
         <InventoryHeader newHref={"/inventory-dashboard/inventory/items/new"} />
       </div>
-      <div className="card_section grid sm:grid-cols-1 md:grid-cols-2 gap-6 p-12 mb-12">
+      <div className="card_section grid sm:grid-cols-1 md:grid-cols-2 gap-6 p-12 mb-12 ">
         {/* <InventoryCard
           title="Item Groups"
           image="/images/dashboard/inventory/item_groups.png"
@@ -79,6 +79,14 @@ function Inventory() {
           subTitle="Tweak your item prices for specific contacts of transactions"
           href="/inventory-dashboard/inventory/units/new"
           buttonTitle="New Unit"
+          // onClick={handleUnit}
+        />
+        <InventoryCard
+          title="Adjustments"
+          image="/images/dashboard/inventory/adjustments.png"
+          subTitle="Tweak your item prices for specific contacts of transactions"
+          href="/inventory-dashboard/inventory/adjustments/new"
+          buttonTitle="New Adjustment"
           // onClick={handleUnit}
         />
       </div>
