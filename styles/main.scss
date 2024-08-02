@@ -4,6 +4,7 @@
 
 //common
 @import "./common/default.scss";
+@import "./common/WaveCircleLoading";
 
 // Global css
 @import "./global/variable";
@@ -27,6 +28,7 @@
 @import "./back-office/inventory-dashboard/layout";
 
 // inventory dashboard page
+@import "./back-office/inventory-dashboard/inventory/index";
 @import "./back-office/inventory-dashboard/home/layout";
 @import "./back-office/inventory-dashboard/home/overview/page";
 @import "./back-office/inventory-dashboard/inventory/item/new/index";

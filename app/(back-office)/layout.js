@@ -29,38 +29,39 @@ function getItem(label, key, icon, children, link) {
 
 const items = [
   getItem("Home", "home", <Home />, null, "/inventory-dashboard/home/overview"),
-  getItem(
-    "Inventory",
-    "inventory",
-    <ShoppingBag />,
-    [
-      getItem("Items", "items", null, null, "/inventory-dashboard/inventory"),
-      getItem(
-        "Categories",
-        "categories",
-        null,
-        null,
-        "/inventory-dashboard/inventory"
-      ),
-      getItem(
-        "Adjustments",
-        "adjustments",
-        null,
-        null,
-        "/inventory-dashboard/inventory"
-      ),
-      getItem("Brands", "brands", null, null, "/inventory-dashboard/inventory"),
-      getItem("Units", "units", null, null, "/inventory-dashboard/inventory"),
-      getItem(
-        "Warehouse",
-        "warehouse",
-        null,
-        null,
-        "/inventory-dashboard/inventory"
-      ),
-    ],
-    "/inventory-dashboard/inventory"
-  ),
+  getItem("Inventory", "inventory", <ShoppingBag />, null, "/inventory-dashboard/inventory"),
+  // getItem(
+  //   "Inventory",
+  //   "inventory",
+  //   <ShoppingBag />,
+  //   [
+  //     getItem("Items", "items", null, null, "/inventory-dashboard/inventory"),
+  //     getItem(
+  //       "Categories",
+  //       "categories",
+  //       null,
+  //       null,
+  //       "/inventory-dashboard/inventory"
+  //     ),
+  //     getItem(
+  //       "Adjustments",
+  //       "adjustments",
+  //       null,
+  //       null,
+  //       "/inventory-dashboard/inventory"
+  //     ),
+  //     getItem("Brands", "brands", null, null, "/inventory-dashboard/inventory"),
+  //     getItem("Units", "units", null, null, "/inventory-dashboard/inventory"),
+  //     getItem(
+  //       "Warehouse",
+  //       "warehouse",
+  //       null,
+  //       null,
+  //       "/inventory-dashboard/inventory"
+  //     ),
+  //   ],
+  //   "/inventory-dashboard/inventory"
+  // ),
   getItem("Sales", "sales", <BaggageClaim />, [
     getItem(
       "Sales Overview",

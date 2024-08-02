@@ -28,11 +28,11 @@ function Inventory() {
   };
 
   return (
-    <div className="h-[100vh] overflow-auto">
+    <div className="h-[100vh] overflow-auto inventory_page_container">
       <div className="sticky header_part">
         <InventoryHeader newHref={"/inventory-dashboard/inventory/items/new"} />
       </div>
-      <div className="card_section grid sm:grid-cols-1 md:grid-cols-2 gap-6 p-12 mb-12 ">
+      <div className="card_section grid gap-6 p-12 mb-12 ">
         {/* <InventoryCard
           title="Item Groups"
           image="/images/dashboard/inventory/item_groups.png"
