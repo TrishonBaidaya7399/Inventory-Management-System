@@ -3,17 +3,17 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const { title, description } = await request.json();
-    const category = await db.category.create({ data: { title, description } });
-    console.log(category);
-    return NextResponse.json(category);
+    const { stockAmount, senderWarehouse, receiverWarehouse, note } = await request.json();
+    const transfer = { stockAmount, senderWarehouse, receiverWarehouse, note };
+    console.log(transfer);
+    return NextResponse.json(transfer);
   } catch (error) {
     console.error(error.message);
     message.error(error.message);
     return NextResponse.json(
       {
         error,
-        message: "Failed to create a category",
+        message: "Failed to transfer stock",
       },
       { status: 500 }
     );

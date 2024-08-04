@@ -34,4 +34,13 @@
       }
     }
   }
+  .globalTabs{
+    background-color: $whiteColor;
+    padding: 8px;
+    ul{
+      background-color: $primary_light;
+      width: fit-content;
+      border-radius: 7px;
+    }
+  }
 }

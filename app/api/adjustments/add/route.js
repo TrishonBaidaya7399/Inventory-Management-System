@@ -3,17 +3,17 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const { stockAmount, branch, note } = await request.json();
-    const adjustments = { stockAmount, branch, note };
-    console.log(adjustments);
-    return NextResponse.json(adjustments);
+    const { stockAmount, warehouse, note } = await request.json();
+    const addStock = { stockAmount, warehouse, note };
+    console.log(addStock);
+    return NextResponse.json(addStock);
   } catch (error) {
     console.error(error.message);
     message.error(error.message);
     return NextResponse.json(
       {
         error,
-        message: "Failed to create a adjustments",
+        message: "Failed to add stock",
       },
       { status: 500 }
     );

@@ -28,7 +28,7 @@ function AddNewStock({ props }) {
     console.log(data);
     const baseURL = "http://localhost:3000";
     try {
-      const response = await fetch(`${baseURL}/api/adjustments`, {
+      const response = await fetch(`${baseURL}/api/adjustments/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ function AddNewStock({ props }) {
       });
       if (response.ok) {
         setSubmitting(false);
-        message.success("New Adjustments Created Successfully!");
+        message.success("New Stock Added Successfully!");
         reset();
       }
     } catch (error) {
@@ -49,11 +49,11 @@ function AddNewStock({ props }) {
 
   return (
       <GlobalForm
-        formTitle={"New Adjustments"}
+        formTitle={"Add New Stock"}
         handleCancel={handleBack}
         handleSubmit={handleSubmit(onSubmit)}
         submitting={submitting}
-        submitButtonTitle="Create New Adjustments"
+        submitButtonTitle="Add Stock"
       >
         <Card className="w-full max-w-3xl mx-auto my-6 h-fit max-h-70 overflow-auto">
           <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
@@ -64,7 +64,7 @@ function AddNewStock({ props }) {
               label="Amount of Stock"
               rules={{ required: true }}
             />
-            <Tooltip title="Select a branch where you want to transfer the stock">
+            <Tooltip title="Select a warehouse where you want to transfer the stock">
               <FormSelectField
                 required={true}
                 options={[
@@ -101,8 +101,8 @@ function AddNewStock({ props }) {
                 ]}
                 control={control}
                 errors={errors}
-                name="branch"
-                label="Branch"
+                name="warehouse"
+                label="Warehouse"
                 mode="multiple"
                 rules={{ required: true }}
               />
