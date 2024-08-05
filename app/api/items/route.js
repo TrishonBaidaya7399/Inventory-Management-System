@@ -1,3 +1,4 @@
+import db from "@/lib/db";
 import { message } from "antd";
 import { NextResponse } from "next/server";
 
@@ -22,23 +23,27 @@ export async function POST(request) {
       images,
       note,
     } = await request.json();
-    const items = { name,
-      category,
-      sku,
-      quantity,
-      unit,
-      brand,
-      unitPrice,
-      costPrice,
-      supplierId,
-      reorderUnit,
-      warehouseId,
-      barcode,
-      dimensions,
-      weight,
-      description,
-      images,
-      note };
+    const items = await db.item.created({
+      data: {
+        name,
+        category,
+        sku,
+        quantity,
+        unit,
+        brand,
+        unitPrice,
+        costPrice,
+        supplierId,
+        reorderUnit,
+        warehouseId,
+        barcode,
+        dimensions,
+        weight,
+        description,
+        images,
+        note,
+      },
+    });
     console.log(items);
     return NextResponse.json(items);
   } catch (error) {

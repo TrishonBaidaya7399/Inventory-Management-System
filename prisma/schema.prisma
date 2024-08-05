@@ -13,8 +13,86 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model category {
+model Category {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String?
+}
+
+model Item {
+  id            String     @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  category      Category   @relation(fields: [categoryId], references: [id])
+  categoryId    String     @db.ObjectId
+  sku           String     @unique
+  quantity      Int
+  unit          Unit       @relation(fields: [unitId], references: [id])
+  unitId        String     @db.ObjectId
+  brand         Brand      @relation(fields: [brandId], references: [id])
+  brandId       String     @db.ObjectId
+  unitPrice     Float
+  costPrice     Float
+  supplier      Supplier   @relation(fields: [supplierId], references: [id])
+  supplierId    String     @db.ObjectId
+  reorderUnit   Int
+  warehouse     Warehouse  @relation(fields: [warehouseId], references: [id])
+  warehouseId   String     @db.ObjectId
+  barcode       String?
+  dimensions    String?
+  weight        Float?
+  description   String?
+  images        String[]   @db.StringArray
+  note          String?
+}
+
+model Unit {
+  id            Int     @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  abbreviation  String
+}
+
+model Brand {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  logo     String[] @db.StringArray
+}
+
+
+model Warehouse {
+  id            Int       @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  location      String?
+  description   String?
+  warehouseType String
+}
+
+model Supplier {
+  id              Int       @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  phone           String?
+  email           String?
+  address         String?
+  contactPerson   String?
+  supplierCode    String    @unique
+  paymentTerms    String?
+  taxID           String?
+  notes           String?
+}
+
+model Post {
+  id       Int    @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId Int
+}
+
+model User {
+  id    Int    @id @default(auto()) @map("_id") @db.ObjectId
+  posts Post[]
+}
+model YourModel {
+  id        Int      @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

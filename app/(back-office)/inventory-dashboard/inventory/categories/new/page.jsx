@@ -27,7 +27,6 @@ function NewCategoryForm({ props }) {
 
   async function onSubmit(data) {
     setSubmitting(true);
-    console.log(data);
     const baseURL = "http://localhost:3000";
     try {
       const response = await fetch(`${baseURL}/api/categories`, {
@@ -38,7 +37,6 @@ function NewCategoryForm({ props }) {
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        console.log(response);
         setSubmitting(false);
         message.success("New Category Created Successfully!");
         reset();

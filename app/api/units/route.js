@@ -1,10 +1,11 @@
+import db from "@/lib/db";
 import { message } from "antd";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
     const { title, abbreviation } = await request.json();
-    const units = { title, abbreviation };
+    const units = await db.Unit.create({ data: { title, abbreviation } });
     console.log(units);
     return NextResponse.json(units);
   } catch (error) {

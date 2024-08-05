@@ -1,3 +1,4 @@
+import db from "@/lib/db";
 import { message } from "antd";
 import { NextResponse } from "next/server";
 

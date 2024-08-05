@@ -42,11 +42,15 @@ function NewBrandFrom({ props }) {
         setSubmitting(false);
         message.success("New Brand Created Successfully!");
         reset();
+      } else {
+        const errorData = await response.json();
+        setSubmitting(false);
+        message.error(errorData.message || "Failed to create a brand");
       }
     } catch (error) {
       setSubmitting(false);
       console.error(error.message);
-      message.error(error.message);
+      message.error("Failed to create a brand");
     }
   }
 
