@@ -1,12 +1,14 @@
+import db from "@/lib/db";
 import { message } from "antd";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
     const { stockAmount, senderWarehouse, receiverWarehouse, note } = await request.json();
-    const transfer = { stockAmount, senderWarehouse, receiverWarehouse, note };
-    console.log(transfer);
-    return NextResponse.json(transfer);
+    const transferStock = await db.transferStock.create({
+      data: { stockAmount, senderWarehouse, receiverWarehouse, note }});
+    console.log(transferStock);
+    return NextResponse.json(transferStock);
   } catch (error) {
     console.error(error.message);
     message.error(error.message);

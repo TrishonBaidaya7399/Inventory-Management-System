@@ -1,1 +1,5 @@
-{}
+{
+  "/api/adjustments/transfer/route": "app/api/adjustments/transfer/route.js",
+  "/api/adjustments/add/route": "app/api/adjustments/add/route.js",
+  "/(back-office)/inventory-dashboard/inventory/adjustments/new/page": "app/(back-office)/inventory-dashboard/inventory/adjustments/new/page.js"
+}

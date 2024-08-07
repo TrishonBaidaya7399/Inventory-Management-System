@@ -1,5 +1,4 @@
 import db from "@/lib/db";
-import { message } from "antd";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
@@ -23,7 +22,8 @@ export async function POST(request) {
       images,
       note,
     } = await request.json();
-    const items = await db.item.created({
+
+    const items = await db.item.create({
       data: {
         name,
         category,
@@ -44,15 +44,15 @@ export async function POST(request) {
         note,
       },
     });
+
     console.log(items);
     return NextResponse.json(items);
   } catch (error) {
     console.error(error.message);
-    message.error(error.message);
     return NextResponse.json(
       {
         error,
-        message: "Failed to create a item",
+        message: "Failed to create an item",
       },
       { status: 500 }
     );

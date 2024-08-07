@@ -64,7 +64,7 @@ function NewUnitFrom({ props }) {
               control={control}
               errors={errors}
               maxLength={50}
-              name="name"
+              name="title"
               label="Unit Name"
               rules={{ required: true }}
             />
@@ -79,7 +79,7 @@ function NewUnitFrom({ props }) {
               rules={{ required: true }}
             />
           </div>
-          <div className="pt-6">
+          {/* <div className="pt-6">
           <FormSelectField
               required={true}
               options={[
@@ -98,7 +98,7 @@ function NewUnitFrom({ props }) {
               label="Is this a default unit?"
               rules={{ required: true }}
             />
-          </div>
+          </div> */}
         </Card>
       </GlobalForm>
     </div>

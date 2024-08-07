@@ -1,15 +1,21 @@
-import { message } from "antd";
+import db from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const { title, abbreviation } = await request.json();
-    const warehouse = { title, abbreviation };
+    const { title, location, description, type } = await request.json();
+    const warehouse = await db.warehouse.create({
+      data: {
+        title,
+        location,
+        description,
+        warehouseType: type,
+      },
+    });
     console.log(warehouse);
     return NextResponse.json(warehouse);
   } catch (error) {
-    console.error(error.message);
-    message.error(error.message);
+    console.error("Error message:", error.message);
     return NextResponse.json(
       {
         error,

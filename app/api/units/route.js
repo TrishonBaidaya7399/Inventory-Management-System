@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
   try {
     const { title, abbreviation } = await request.json();
-    const units = await db.Unit.create({ data: { title, abbreviation } });
+    const units = await db.unit.create({ data: { title, abbreviation } });
     console.log(units);
     return NextResponse.json(units);
   } catch (error) {

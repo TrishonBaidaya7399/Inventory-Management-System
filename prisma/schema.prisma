@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,57 +14,55 @@ model Category {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String?
+  items       Item[]     @relation("CategoryItems")
 }
 
-model Item {
-  id            String     @id @default(auto()) @map("_id") @db.ObjectId
-  name          String
-  category      Category   @relation(fields: [categoryId], references: [id])
-  categoryId    String     @db.ObjectId
-  sku           String     @unique
-  quantity      Int
-  unit          Unit       @relation(fields: [unitId], references: [id])
-  unitId        String     @db.ObjectId
-  brand         Brand      @relation(fields: [brandId], references: [id])
-  brandId       String     @db.ObjectId
-  unitPrice     Float
-  costPrice     Float
-  supplier      Supplier   @relation(fields: [supplierId], references: [id])
-  supplierId    String     @db.ObjectId
-  reorderUnit   Int
-  warehouse     Warehouse  @relation(fields: [warehouseId], references: [id])
-  warehouseId   String     @db.ObjectId
-  barcode       String?
-  dimensions    String?
-  weight        Float?
-  description   String?
-  images        String[]   @db.StringArray
-  note          String?
+model TransferStock {
+  id                String     @id @default(auto()) @map("_id") @db.ObjectId
+  stockAmount       Int
+  senderWarehouse   Warehouse  @relation("SenderWarehouse", fields: [senderWarehouseId], references: [id])
+  senderWarehouseId String     @db.ObjectId
+  receiverWarehouse Warehouse  @relation("ReceiverWarehouse", fields: [receiverWarehouseId], references: [id])
+  receiverWarehouseId String   @db.ObjectId
+  note              String?
+}
+
+model AddStock {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  stockAmount  Int
+  warehouse    Warehouse  @relation(fields: [warehouseId], references: [id], name: "WarehouseToAddStocks")
+  warehouseId  String     @db.ObjectId
+  note         String?
 }
 
 model Unit {
-  id            Int     @id @default(auto()) @map("_id") @db.ObjectId
+  id            String     @id @default(auto()) @map("_id") @db.ObjectId
   title         String
   abbreviation  String
+  items         Item[]     @relation("UnitItems")
 }
 
 model Brand {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  title    String
-  logo     String[] @db.StringArray
+  name     String
+  logo     String[]
+  items    Item[]     @relation("BrandItems")
 }
 
-
 model Warehouse {
-  id            Int       @id @default(auto()) @map("_id") @db.ObjectId
-  name          String
-  location      String?
-  description   String?
-  warehouseType String
+  id                     String          @id @default(auto()) @map("_id") @db.ObjectId
+  title                  String
+  location               String?
+  description            String?
+  warehouseType          String
+  items                  Item[]          @relation("WarehouseItems")
+  addStocks              AddStock[]      @relation("WarehouseToAddStocks")
+  transferStocksSent     TransferStock[] @relation("SenderWarehouse")
+  transferStocksReceived TransferStock[] @relation("ReceiverWarehouse")
 }
 
 model Supplier {
-  id              Int       @id @default(auto()) @map("_id") @db.ObjectId
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
   name            String
   phone           String?
   email           String?
@@ -77,22 +72,50 @@ model Supplier {
   paymentTerms    String?
   taxID           String?
   notes           String?
+  items           Item[]     @relation("SupplierItems")
 }
 
 model Post {
-  id       Int    @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
   title    String
-  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  authorId Int
+  author   User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId String    @db.ObjectId
 }
 
 model User {
-  id    Int    @id @default(auto()) @map("_id") @db.ObjectId
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
   posts Post[]
 }
+
 model YourModel {
-  id        Int      @id @default(auto()) @map("_id") @db.ObjectId
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Item {
+  id            String     @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  category      Category   @relation(fields: [categoryId], references: [id], name: "CategoryItems")
+  categoryId    String     @db.ObjectId
+  sku           String     @unique
+  quantity      Int
+  unit          Unit       @relation(fields: [unitId], references: [id], name: "UnitItems")
+  unitId        String     @db.ObjectId
+  brand         Brand      @relation(fields: [brandId], references: [id], name: "BrandItems")
+  brandId       String     @db.ObjectId
+  unitPrice     Float
+  costPrice     Float
+  supplier      Supplier   @relation(fields: [supplierId], references: [id], name: "SupplierItems")
+  supplierId    String     @db.ObjectId
+  reorderUnit   Int
+  warehouse     Warehouse  @relation(fields: [warehouseId], references: [id], name: "WarehouseItems")
+  warehouseId   String     @db.ObjectId
+  barcode       String?
+  dimensions    String?
+  weight        Float?
+  description   String?
+  images        String[]
+  note          String?
 }

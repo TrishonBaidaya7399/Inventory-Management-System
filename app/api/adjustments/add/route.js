@@ -1,10 +1,13 @@
+import db from "@/lib/db";
 import { message } from "antd";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
     const { stockAmount, warehouse, note } = await request.json();
-    const addStock = { stockAmount, warehouse, note };
+    const addStock = await db.addStock.create({
+      data: { stockAmount, warehouse, note },
+    });
     console.log(addStock);
     return NextResponse.json(addStock);
   } catch (error) {
